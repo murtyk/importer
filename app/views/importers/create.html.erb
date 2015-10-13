@@ -1,0 +1,15 @@
+<h1>Importing <%= @import_status.model %> data...Please wait</h1>
+<div id ='import_status' style = 'margin-left: 100px; text-weight: bold'>
+  <p>
+    <span id='count_succeeded' style='padding: 5px; border: solid green;'>0</span>
+    Records Imported
+  </p>
+  <p style = "margin-top: 20px">
+    <span id='count_failed' style='padding: 5px; border: solid red;'>0</span>
+    Records Failed
+  </p>
+</div>
+<%= content_tag "div", id: "page_data", data: { import_status_id: @import_status.id } do %>
+<% end %>
+
+

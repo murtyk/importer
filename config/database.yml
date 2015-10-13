@@ -1,0 +1,15 @@
+default: &default
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: railsdev
+  password: railsdev
+
+development:
+  <<: *default
+  database: uploader_dev
+
+test:
+  <<: *default
+  database: uploader_test

@@ -1,0 +1,49 @@
+<h1>Import Status</h1>
+<p>
+  <b>Model: </b><%= @import_status.type %>
+</p>
+<p>
+  <b>File: </b><%= @import_status.file_name %>
+</p>
+<p>
+  <b>Total Rows: </b><%= @import_status.count_rows %>
+</p>
+<p>
+  <b>Rows Imported: </b><%= @import_status.count_succeeded %>
+</p>
+<p>
+  <b>Rows Failed: </b><%= @import_status.count_failed %>
+</p>
+
+
+<table id='failed_rows'>
+  <tr>
+    <th>Row No</th>
+    <th>Errors</th>
+    <th>Row Data</th>
+  </tr>
+  <% @import_status.failed_rows.each do |row_id, errors, row_data| %>
+  <tr>
+    <td><%= row_id %></td>
+    <td><%= errors.html_safe %></td>
+    <td><%= row_data.html_safe %></td>
+  </tr>
+  <% end %>
+</table>
+<hr>
+<table id='succeeded_rows'>
+  <tr>
+    <th>ID</th>
+    <th>Category</th>
+    <th>Description</th>
+    <th>Price</th>
+  </tr>
+  <% @import_status.imported_rows.each do |id, category, description, price| %>
+  <tr>
+    <td><%= id %></td>
+    <td><%= category %></td>
+    <td><%= description %></td>
+    <td><%= price %></td>
+  </tr>
+  <% end %>
+</table>

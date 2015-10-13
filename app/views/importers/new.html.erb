@@ -1,0 +1,32 @@
+<div id="page_header">
+  <h1><%= @importer_form.title %></h1>
+</div>
+<%= form_for @importer_form, url: importers_path, method: :post, multipart: true do |f| %>
+  <% if @importer_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@importer_form.errors.count, "error") %>:</h2>
+
+      <ul>
+        <% @importer_form.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :file, 'Select a file to import' %><br>
+    <%= f.file_field :file %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :model %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+<% end %>
+<hr>
+<h1>Instructions</h1>
+<%= @importer_form.user_instructions %>

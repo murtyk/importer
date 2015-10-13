@@ -1,0 +1,2 @@
+class CategoryImportStatus < ImportStatus
+end
